@@ -2684,21 +2684,17 @@ class Program
 ```mermaid
 graph TD
     subgraph Core
-        App[Приложение]
-        PluginManager[Менеджер плагинов]
+        App --> PluginManager
     end
-
     subgraph Plugins
-        PluginA[PDF Экспорт]
-        PluginB[DOCX Экспорт]
+        PluginA
+        PluginB
     end
-
     IPlugin[<<interface>> IPlugin]
 
-    App --> PluginManager
     PluginManager --> IPlugin
-    PluginA ..|> IPlugin
-    PluginB ..|> IPlugin
+    PluginA -.->|implements| IPlugin
+    PluginB -.->|implements| IPlugin
 ```
 
 ---
